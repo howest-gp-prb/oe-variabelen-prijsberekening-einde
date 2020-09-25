@@ -31,15 +31,15 @@ namespace Prb.Variabelen02.WPF
             decimal transport = decimal.Parse(txtTransport.Text);
             decimal handling = decimal.Parse(txtHandling.Text);
             decimal other = decimal.Parse(txtOther.Text);
-            float vat = float.Parse(txtNet.Text);
+            float vat = float.Parse(txtVAT.Text);
 
             decimal totalnet = net + transport + handling + other;
-            vat = vat / 100;
-            decimal netvat = (net * (decimal)vat);
+            vat = vat / 100F;
+            decimal netvat = net * (decimal)vat;
             decimal transportvat = (transport * (decimal)vat);
             decimal handlingvat = handling * (decimal)vat;
             decimal othervat = other * (decimal)vat;
-            decimal totalgross = totalnet * (decimal)vat;
+            decimal totalgross = (totalnet * (decimal)vat) + totalnet;
 
             string report = "Net = " + net + " \t";
             report += "(VAT = " + netvat + ")\n";
